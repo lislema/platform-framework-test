@@ -1,0 +1,205 @@
+name: "Bug"
+description: "Report a software defect"
+title: "[Bug]: "
+
+labels:
+  - "bug"
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        # Bug Report
+
+        Complete all mandatory fields before submitting.
+
+        ---
+        ## Enterprise Header
+        The first five fields are mandatory for every engineering work item.
+
+  ######################################################################
+  # Enterprise Header (Common to ALL Issue Types)
+  ######################################################################
+
+  - type: input
+    id: requestor_id
+    attributes:
+      label: Requestor ID
+      description: Employee ID or corporate email address.
+      placeholder: john.doe@accenture.com
+    validations:
+      required: true
+
+  - type: input
+    id: application_name
+    attributes:
+      label: Application Name
+      description: Name of the application or service.
+      placeholder: CNW
+    validations:
+      required: true
+
+  - type: input
+    id: application_id
+    attributes:
+      label: Application ID (AIR ID)
+      description: Enterprise AIR Application Identifier.
+      placeholder: "316433"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Select the business priority.
+      options:
+        - p0-priority
+        - p1-priority
+        - p2-priority
+        - p3-priority
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component
+      description: Select the affected component.
+      options:
+        - api
+        - backend
+        - ui-component
+        - database
+        - data-component
+        - infrastructure
+        - ci-cd
+        - security
+        - testing-component
+        - ai-component
+        - ai-agent
+        - documentation
+        - other-component
+    validations:
+      required: true
+
+  ######################################################################
+  # Bug Details
+  ######################################################################
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Select the business impact.
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: input
+    id: application_version
+    attributes:
+      label: Application Version
+      description: Version where the issue was observed.
+      placeholder: v1.5.0
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Development
+        - Test
+        - UAT
+        - Production
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Describe the defect.
+      placeholder: |
+        Describe the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the exact steps required to reproduce the issue.
+      placeholder: |
+        1. Login
+        2. Navigate to...
+        3. Click...
+        4. Observe...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: Expected Result
+      placeholder: |
+        Describe what should happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_result
+    attributes:
+      label: Actual Result
+      placeholder: |
+        Describe what actually happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_impact
+    attributes:
+      label: Business Impact
+      description: Describe the impact to users or the business.
+      placeholder: |
+        Users cannot login.
+        Payment processing unavailable.
+        Performance degraded.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Messages
+      description: Paste stack traces or log output.
+      render: shell
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Known Workaround
+      description: Describe any temporary workaround.
+
+  - type: textarea
+    id: additional_information
+    attributes:
+      label: Additional Information
+      description: Screenshots, links or other supporting information.
+
+  ######################################################################
+  # Verification
+  ######################################################################
+
+  - type: checkboxes
+    id: verification
+    attributes:
+      label: Verification Checklist
+      options:
+        - label: Existing issues have been searched.
+        - label: The issue can be reproduced.
+        - label: Logs or screenshots have been attached where applicable.
+        - label: Business impact has been assessed.
