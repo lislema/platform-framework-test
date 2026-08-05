@@ -1,0 +1,212 @@
+name: "Incident"
+description: "Report a production or operational incident"
+title: "[Incident]: "
+
+labels:
+  - "incident"
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        # Incident Report
+
+        Complete all mandatory fields before submitting.
+
+        ## Enterprise Header
+
+        The first five fields are mandatory for every engineering work item.
+
+  - type: input
+    id: requestor_id
+    attributes:
+      label: Requestor ID
+      description: Employee ID or corporate email address.
+      placeholder: john.doe@accenture.com
+    validations:
+      required: true
+
+  - type: input
+    id: application_name
+    attributes:
+      label: Application Name
+      description: Name of the application or service.
+      placeholder: CNW
+    validations:
+      required: true
+
+  - type: input
+    id: application_id
+    attributes:
+      label: Application ID (AIR ID)
+      description: Enterprise AIR Application Identifier.
+      placeholder: "316433"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Business priority.
+      options:
+        - p0-priority
+        - p1-priority
+        - p2-priority
+        - p3-priority
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component
+      description: Select the affected component.
+      options:
+        - api
+        - backend
+        - ui-component
+        - database
+        - data-component
+        - infrastructure
+        - ci-cd
+        - security
+        - testing-component
+        - ai-component
+        - ai-agent
+        - documentation
+        - other-component
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Incident Details
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Business impact of the incident.
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Production
+        - UAT
+        - Test
+        - Development
+    validations:
+      required: true
+
+  - type: textarea
+    id: incident_summary
+    attributes:
+      label: Incident Summary
+      description: Briefly describe the incident.
+      placeholder: Production API unavailable due to database connectivity failure.
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_impact
+    attributes:
+      label: Business Impact
+      description: Describe the impact on customers or business operations.
+      placeholder: |
+        Users unable to login.
+        Transactions failing.
+        Increased response times.
+    validations:
+      required: true
+
+  - type: input
+    id: detected_at
+    attributes:
+      label: Detection Time
+      description: Date and time the incident was first detected.
+      placeholder: 2026-08-03 09:15 UTC
+
+  - type: input
+    id: started_at
+    attributes:
+      label: Incident Start Time
+      description: When did the incident begin?
+      placeholder: 2026-08-03 09:10 UTC
+
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Incident Timeline
+      description: Provide a timeline of significant events.
+      placeholder: |
+        09:10 - Database connection failures observed.
+        09:15 - Alert generated.
+        09:20 - Incident declared.
+        09:35 - Database restarted.
+        09:42 - Service restored.
+
+  - type: textarea
+    id: suspected_root_cause
+    attributes:
+      label: Suspected Root Cause
+      description: Initial root cause analysis.
+      placeholder: |
+        Database connection pool exhausted.
+
+  - type: textarea
+    id: recovery_actions
+    attributes:
+      label: Mitigation / Recovery Actions
+      description: Describe actions taken to restore service.
+      placeholder: |
+        Restarted database.
+        Increased connection pool.
+        Redeployed API service.
+
+  - type: textarea
+    id: follow_up_actions
+    attributes:
+      label: Follow-up Actions
+      description: Actions required to prevent recurrence.
+      placeholder: |
+        Create Bug
+        Create Change Request
+        Improve monitoring
+
+  - type: textarea
+    id: related_issues
+    attributes:
+      label: Related Issues
+      description: Link Bugs, Tasks, Change Requests or Problems.
+      placeholder: |
+        Bug #123
+        Task #456
+        Problem #789
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Closure
+
+  - type: checkboxes
+    id: closure
+    attributes:
+      label: Incident Closure Checklist
+      options:
+        - label: Service restored
+        - label: Stakeholders informed
+        - label: Root cause identified
+        - label: Follow-up work created
+        - label: Post Incident Review completed
